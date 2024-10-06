@@ -3,13 +3,13 @@ package config
 import (
 	"fmt"
 	"os"
-	"github.com/faanrm/CRUD-api/config/utils"
+
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
 
 func ConnectDB() (*gorm.DB, error) {
-	utils.setEnv()
+	utils.setEnvVar()
 	user := os.Getenv("DB_USER")
 	password := os.Getenv("DB_PASSWORD")
 	host := os.Getenv("DB_HOST")

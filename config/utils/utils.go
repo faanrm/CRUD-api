@@ -2,7 +2,7 @@ package utils
 
 import "os"
 
-func setEnv() {
+func SetEnvVar() {
 	os.Setenv("DB_USER", "root")
 	os.Setenv("DB_PASSWORD", "")
 	os.Setenv("DB_HOST", "127.0.0.1")
