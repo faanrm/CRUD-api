@@ -28,7 +28,8 @@ func (u *Users) Create() (*Users, error) {
 	}
 	return u, nil
 }
-func (u *Users) ReadGeAll() ([]*Users, error) {
+
+func (u *Users) ReadAll() ([]*Users, error) {
 	db, err := config.ConnectDB()
 	if err != nil {
 		return nil, err
