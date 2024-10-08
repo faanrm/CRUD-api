@@ -5,6 +5,7 @@ import (
 	"os"
 
 	"github.com/faanrm/CRUD-api/config/utils"
+
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
@@ -33,5 +34,6 @@ func ConnectDB() (*gorm.DB, error) {
 	}
 
 	fmt.Println("connected to database")
+
 	return db, nil
 }

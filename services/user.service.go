@@ -5,8 +5,8 @@ import "github.com/faanrm/CRUD-api/models"
 type UserServices struct {
 }
 
-func (us *UserServices) CreateUser(user *models.Users, userId string) (*models.Users, error) {
-	if userId == "" {
+func (us *UserServices) CreateUser(user *models.Users, userId ...string) (*models.Users, error) {
+	if len(userId) == 0 {
 		createdUser, err := user.Create()
 		if err != nil {
 			return nil, err
@@ -29,15 +29,16 @@ func (us *UserServices) CreateUser(user *models.Users, userId string) (*models.U
 		return updatedUser, nil
 	}
 }
-func (us *UserServices) GetUser(user *models.Users, userId string) ([]*models.Users, error) {
-	if userId == "" {
+
+func (us *UserServices) GetUser(user *models.Users, userId ...string) ([]*models.Users, error) {
+	if len(userId) == 0 {
 		users, err := user.ReadAll()
 		if err != nil {
 			return nil, err
 		}
 		return users, nil
 	} else {
-		user := &models.Users{UserId: userId}
+		user := &models.Users{UserId: userId[0]}
 		foundUser, err := user.Read()
 		if err != nil {
 			return nil, err
@@ -45,6 +46,7 @@ func (us *UserServices) GetUser(user *models.Users, userId string) ([]*models.Us
 		return []*models.Users{foundUser}, nil
 	}
 }
+
 func (us *UserServices) DeleteUser(userId string) error {
 	user := &models.Users{UserId: userId}
 	err := user.Delete()
